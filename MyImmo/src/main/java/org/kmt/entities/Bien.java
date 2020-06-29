@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -27,6 +28,7 @@ public class Bien implements Serializable{
 	private boolean active;
 	private double latitude, longitude, altitude;
 	@ManyToOne
+	@JoinColumn(name = "categorie_id", nullable = false)
 	private Categorie categorie;
 
 }

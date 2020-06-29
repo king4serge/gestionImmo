@@ -1,0 +1,20 @@
+<table border="1">
+    <thead>
+      <tr>
+          <th>Images</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bien of biens">
+        <td>
+            <img [src] ="bien.urlPhoto" height="50"/>
+        </td>
+        <td>{{ bien.nom }}</td>
+        <td>{{ bien.description }}</td>
+        <td>{{ bien.prix | currency: 'EUR'}}</td>
+      </tr>
+    </tbody>
+  </table>
