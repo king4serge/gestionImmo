@@ -12,8 +12,9 @@ export class BienService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getBiens(): Observable<Bien[]>{
-    return this.httpClient.get<GetResponseBiens>(this.baseUrl).pipe(
+  getBiens(theCategorieId: number): Observable<Bien[]>{
+    const searchUrl = `${this.baseUrl}/search/categorieId?id=${theCategorieId}`;
+    return this.httpClient.get<GetResponseBiens>(searchUrl).pipe(
       map(response => response._embedded.biens)
     );
   }

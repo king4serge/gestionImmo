@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BienListComponent } from './components/bien-list/bien-list.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'biens', component: BienListComponent},
+  {path: 'categorie/:id', component: BienListComponent},
+  {path: '', redirectTo: '/biens', pathMatch: 'full'},
+  {path: '**', component: PageNotFoundComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
