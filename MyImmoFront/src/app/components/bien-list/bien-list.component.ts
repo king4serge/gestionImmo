@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class BienListComponent implements OnInit {
 
   biens: Bien[];
-  currentCategorieId: number
+  currentCategorieId: number;
+  searchMode: boolean;
 
   constructor(private _bienService: BienService,
     private _activatedRoute: ActivatedRoute) { }
@@ -24,6 +25,19 @@ export class BienListComponent implements OnInit {
   }
 
   listBiens(){
+    this.searchMode = this._activatedRoute.snapshot.paramMap.has('keyword');
+    if(this.searchMode){
+      //do search work
+      this.handleSearchBiens();
+    }
+    else{
+      //display biens based on category
+      this.handleListBiens();
+    }
+    
+  }
+
+  handleListBiens(){
     const hasCategorieId: boolean = this._activatedRoute.snapshot.paramMap.has('id');
     if(hasCategorieId){
      this.currentCategorieId = +this._activatedRoute.snapshot.paramMap.get('id');
@@ -34,6 +48,17 @@ export class BienListComponent implements OnInit {
 
     this._bienService.getBiens(this.currentCategorieId).subscribe(
       data => this.biens = data
+    )
+
+  }
+
+  handleSearchBiens(){
+    const keyword: string = this._activatedRoute.snapshot.paramMap.get('keyword');
+    this._bienService.searchBiens(keyword).subscribe(
+      data =>{
+        this.biens = data;
+        
+      }
     )
   }
 
