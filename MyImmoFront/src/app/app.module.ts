@@ -10,6 +10,7 @@ import { BienService } from './services/bien.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BienCategorieComponent } from './components/bien-categorie/bien-categorie.component';
 import { SearchComponent } from './components/search/search.component';
+import { BienDetailsComponent } from './components/bien-details/bien-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchComponent } from './components/search/search.component';
     BienListComponent,
     PageNotFoundComponent,
     BienCategorieComponent,
-    SearchComponent
+    SearchComponent,
+    BienDetailsComponent
   ],
   imports: [
     BrowserModule,

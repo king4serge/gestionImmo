@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-3">
+        <app-bien-categorie></app-bien-categorie>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            <!-- To display the image -->
+            <div class="col-12 col-md-4">
+                <div class="thumbnail">
+                    <img src="{{bien.urlPhoto}}" weight="300" height="150" />
+                </div>
+            </div>
+            <!-- To display the bien informations -->
+            <div class="col-12 col-md-8">
+                <h3>{{bien.nom}}</h3>
+                <hr />
+                <p>{{bien.description}}</p>
+                <hr />
+                <h4>Prix: <strong>{{bien.prix | currency: 'EURO'}}</strong> </h4>
+                <hr />
+                <h6>Quantité disponible: {{bien.quantite}}</h6>
+                <hr />
+                <a routerLink = "/biens" class="btn btn-success">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+                <a href="#" class="btn btn-primary ml-1">
+                    <i class="fa fa-map-marker-alt"></i> Position sur la carte
+                </a>
+                <a href="#" class="btn btn-info ml-1">
+                    <i class="fa fa-phone-alt" aria-hidden="true"></i>
+                    Contacter l'agent
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

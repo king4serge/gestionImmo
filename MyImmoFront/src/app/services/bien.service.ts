@@ -34,7 +34,13 @@ export class BienService {
     const searchUrl = `${this.baseUrl}/search/searchbykeyword?nom=${keyword}`;
     return this.getBiensList(searchUrl);
   }
+
+  get(bienId: number): Observable<Bien> {
+    const bienDetailsUrl = `${this.baseUrl}/${bienId}`;
+    return this.httpClient.get<Bien>(bienDetailsUrl);
+  }
 }
+
 
 interface GetResponseBiens{
   _embedded: {
