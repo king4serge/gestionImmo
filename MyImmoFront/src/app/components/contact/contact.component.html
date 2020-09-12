@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-3">
+        <app-bien-categorie></app-bien-categorie>
+    </div>
+    <div class="col-lg-9">
+        <div class="row" *ngFor="let utilisateur of users">
+            <!-- To display the image -->
+            <div class="col-12 col-md-4">
+                <div class="thumbnail">
+                    <img class="card-img img-responsive" src="{{utilisateur.photo}}" weight="250" height="300" />
+                </div>
+            </div>
+            <!-- To display the bien informations -->
+            <div class="col-12 col-md-8">
+                <h3>{{utilisateur.nom}} {{utilisateur.prenom}}</h3>
+                
+                <hr />
+                <h4>Téléphone: <strong>{{utilisateur.telephone}}</strong> </h4>
+                <hr />
+                <h4>email: {{utilisateur.email}}</h4>
+                <hr />
+                <a routerLink = "/biens" class="btn btn-success">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

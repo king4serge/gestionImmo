@@ -20,6 +20,8 @@ public class RepositoryConfig implements RepositoryRestConfigurer{
 		config.getCorsRegistry()
 		.addMapping("/**")
 		.allowedOrigins("*");
+		//.allowedHeaders("*")
+		//.exposedHeaders("Authorization");
 	}
 
 }

@@ -27,7 +27,6 @@ export class BienDetailsComponent implements OnInit {
     this._bienService.get(id).subscribe(
       data => {
         this.bien = data;
-        
       }
     );
   }

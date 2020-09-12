@@ -1,20 +1,47 @@
-<table border="1" class="table">
-    <thead>
-      <tr>
-          <th>Images</th>
-        <th>Nom</th>
-        <th>Description</th>
-        <th>Prix</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let bien of biens">
-        <td>
-            <img [src] ="bien.urlPhoto" height="50"/>
-        </td>
-        <td>{{ bien.nom }}</td>
-        <td>{{ bien.description }}</td>
-        <td>{{ bien.prix | currency: 'EUR'}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-lg-3">
+    <app-bien-categorie></app-bien-categorie>
+  </div>
+  <!-- /.col-lg-3 -->
+  <div class="col-lg-9">
+    <div class="row" *ngIf="biens">
+      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let bien of biens ">
+        <div class="card h-100">
+          <a routerLink="/biens/{{ bien.id }}" routerLinkActive="router-link-active"><img
+              class="card-img-top img-responsive" [src]="bien.urlPhoto"></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a routerLink="/biens/{{ bien.id }}" routerLinkActive="router-link-active">{{ bien.nom }}</a>
+            </h4>
+            <h5>{{ bien.prix | currency: 'FCFA'}}</h5>
+            <p class="card-text">{{ bien.description }}</p>
+          </div>
+          <div class="card-footer">
+            <a routerLink="/biens/{{ bien.id }}" routerLinkActive="router-link-active">
+              <button class="btn btn-primary float-right">Details</button>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      <div *ngIf="biens?.length == 0" class="col-md-12 alert alert-warning mt-3">
+        Ce bien n'est pas trouvé!!
+      </div>
+    </div>
+    <div>
+      <ul *ngIf="pages">
+        <li *ngFor="let p of pages">
+          <a>{{p}}</a>
+        </li>
+      </ul>
+    </div>
+    <!-- pagination selector here -->
+     <div>
+      <!-- <pagination-controls [items]="biens" (changePage)="pageClick($event)" [pageSize]="pageSize"></pagination-controls> -->
+    <!--<pagination-controls id="listing_pagination"
+      maxSize="6"
+      directionLinks="true"
+     (pageChange)="pageSize = $event"></pagination-controls>-->
+    </div>
+  </div>
+</div>

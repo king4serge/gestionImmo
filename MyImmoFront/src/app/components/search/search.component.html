@@ -1,11 +1,18 @@
 <div class="col-md-12">
     <div class="row">
-        <div class="col-md-8">
-            <input type="text" #searchInput (keyup.enter)="searchBiens(searchInput.value)" class="form-control"
+        <!-- <div class="col-md-8">
+            <input type="text" #searchInput (keyup.enter)="onSearchBiens(searchInput.value)" class="form-control"
                 placeholder="Chercher un bien">
         </div>
         <div class="col-md2">
-            <button type="submit" (click)="searchBiens(searchInput.value)" class="btn btn-primary">Chercher</button>
-        </div>
+            <button type="submit" (click)="onSearchBiens(searchInput.value)" class="btn btn-primary">Chercher</button>
+        </div> -->
+        <form #f="ngForm" (ngSubmit)="onSearchBiens(f.value)">
+            <div class="form-group">
+                <label>keyword</label>
+                <input type="text" name="keyword" ngModel>
+                <button type="submit" class="btn btn-primary">Chercher</button>
+            </div>
+        </form>
     </div>
 </div>

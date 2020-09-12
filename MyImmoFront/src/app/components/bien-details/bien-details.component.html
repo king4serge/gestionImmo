@@ -7,7 +7,7 @@
             <!-- To display the image -->
             <div class="col-12 col-md-4">
                 <div class="thumbnail">
-                    <img src="{{bien.urlPhoto}}" weight="300" height="150" />
+                    <img class="card-img img-responsive" src="{{bien.urlPhoto}}" weight="250" height="300" />
                 </div>
             </div>
             <!-- To display the bien informations -->
@@ -16,7 +16,7 @@
                 <hr />
                 <p>{{bien.description}}</p>
                 <hr />
-                <h4>Prix: <strong>{{bien.prix | currency: 'EUR'}}</strong> </h4>
+                <h4>Prix: <strong>{{bien.prix | currency: ' FCFA'}}</strong> </h4>
                 <hr />
                 <h6>Quantité disponible: {{bien.quantite}}</h6>
                 <hr />
@@ -26,7 +26,7 @@
                 <a href="#" class="btn btn-primary ml-1">
                     <i class="fa fa-map-marker-alt"></i> Position sur la carte
                 </a>
-                <a href="#" class="btn btn-info ml-1">
+                <a routerLink = "/contact" class="btn btn-info ml-1">
                     <i class="fa fa-phone-alt" aria-hidden="true"></i>
                     Contacter l'agent
                 </a>

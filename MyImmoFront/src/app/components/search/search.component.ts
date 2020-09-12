@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BienService } from 'src/app/services/bien.service';
+import { Bien } from 'src/app/common/bien';
 
 @Component({
   selector: 'app-search',
@@ -8,14 +10,33 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  biens: Bien[];
+  currentPage: number=0;
+  size: number=6;
+  totalPages: number=0;
+  pages: Array<number>;
+
+  constructor(private _router: Router,
+    private _bienService: BienService) { }
 
   ngOnInit(): void {
   }
 
   searchBiens(keyword){
-    this._router.navigateByUrl('/search/'+ keyword)
+    this._router.navigateByUrl('/search/'+ keyword);
     
+    
+  }
+
+  onSearchBiens(form){
+    this._bienService.searchBiens(form.keyword,this.currentPage,this.size)
+    .subscribe(data =>{
+      //this.totalPages = data["page"].totalPages;
+      this.pages = new Array<number>(this.totalPages);
+      this.biens = data;
+      console.log(data);
+      
+    });
   }
 
 }
